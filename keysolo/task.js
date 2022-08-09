@@ -8,6 +8,10 @@ class Game {
     this.reset();
 
     this.registerEvents();
+
+    document.addEventListener('keydown', event => {
+      this.registerEvents(event).bind(this.currentSymbol.textContent)
+    })
   }
 
   reset() {
@@ -19,21 +23,19 @@ class Game {
 
 
 
-  registerEvents() {
-    let symb = this.currentSymbol.textContent; // почему значение не обновляется? что для этого нужно сделать?
-    document.addEventListener('keydown', function(e){  
-      //let symb = this.currentSymbol.textContent; почему при вызове внутри анонимной функции возвращается пустое значение
+  registerEvents(e) {
+    let symb = this.currentSymbol.textContent
+    if (e != undefined){
+      console.log(symb)
       if(String.fromCharCode(e.keyCode).toLowerCase () === symb){
         console.log('tr')
-        marker = 1;
         this.success;
       }
       else{ 
-       console.log('fl')
-       marker = 2;
+        console.log('fl')
         this.fail;
       }
-    });
+    }  
   }
 
 

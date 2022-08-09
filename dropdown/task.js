@@ -8,7 +8,7 @@ function catchClik(){
         }
         else{
             button['children']['1'].className = "dropdown__list dropdown__list_active";
-            for (let i = 0;i<= btnList.length; i++){
+            for (let i = 0;i< btnList.length; i++){
                 btnList[i].onclick = () => {
                 btnvalue.textContent = btnList[i].textContent;
                 return false;
