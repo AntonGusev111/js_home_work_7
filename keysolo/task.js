@@ -9,9 +9,6 @@ class Game {
 
     this.registerEvents();
 
-    document.addEventListener('keydown', event => {
-      this.registerEvents(event).bind(this.currentSymbol.textContent)
-    })
   }
 
   reset() {
@@ -22,20 +19,19 @@ class Game {
 
 
 
-
-  registerEvents(e) {
-    let symb = this.currentSymbol.textContent
-    if (e != undefined){
-      console.log(symb)
-      if(String.fromCharCode(e.keyCode).toLowerCase () === symb){
+  registerEvents() {
+    document.addEventListener('keydown', (e) => {
+      
+      if (e != undefined){
+      if(String.fromCharCode(e.keyCode).toLowerCase () === this.currentSymbol.textContent){
         console.log('tr')
-        this.success;
+        this.success();
       }
       else{ 
-        console.log('fl')
-        this.fail;
+        this.fail();
       }
-    }  
+    }
+    })  
   }
 
 
